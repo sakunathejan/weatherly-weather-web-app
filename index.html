@@ -1,16 +1,37 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Weatherly - Weather App</title>
     <link href="https://cdn.jsdelivr.net/npm/flowbite@4.0.1/dist/flowbite.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="./CSS/style.css">
 </head>
-<body>
-    
+
+<body class="bg-[#eaebf0] font-[Outfit]">
+    <!-- SIDE NAV BAR -->
+    <div class="bg-[white] w-20 h-screen relative">
+        <img class="w-17 ml-2" src="./Assets/logo.svg" alt="" />
+
+        <div class="relative group ml-2 mt-25 w-17 h-17 cursor-pointer rounded-2xl hover:bg-[#a2c4f9] transition-colors duration-300 ">
+            <!-- Original Image -->
+            <img class="absolute inset-0 w-full h-full rounded-2xl opacity-100 group-hover:opacity-0 transition-opacity duration-300 ease-in-out pointer-events-none " src="./Assets/weatherIcon.svg" alt="Weather" />
+
+            <!-- Hover Image -->
+            <img class="absolute inset-0 w-full h-full rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out pointer-events-none" src="./Assets/weatherIconDarkMode.svg" alt="" />
+        </div>
+
+    </div>
+
+    <!-- MAIN CARD -->
+    <div class=" absolute top-7.5 left-25 right-7.5 bottom-7.5">
+        <h1>Panadura, Sri Lanka</h1>
+    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <script src="https://cdn.jsdelivr.net/npm/flowbite@4.0.1/dist/flowbite.min.js"></script>
     <script src="./JS/app.js"></script>
 </body>
+
 </html>
