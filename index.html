@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Weatherly - Weather App</title>
     <link href="https://cdn.jsdelivr.net/npm/flowbite@4.0.1/dist/flowbite.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="./CSS/style.css">
+    <link rel="stylesheet" href="./CSS/style.css" />
 </head>
 
 <body class="bg-[#eaebf0] font-[Outfit]">
@@ -14,19 +14,92 @@
     <div class="bg-[white] w-20 h-screen relative">
         <img class="w-17 ml-2" src="./Assets/logo.svg" alt="" />
 
-        <div class="relative group ml-2 mt-25 w-17 h-17 cursor-pointer rounded-2xl hover:bg-[#a2c4f9] transition-colors duration-300 ">
+        <div
+            class="relative group ml-2 mt-25 w-17 h-17 cursor-pointer rounded-2xl hover:bg-[#a2c4f9] transition-colors duration-300">
             <!-- Original Image -->
-            <img class="absolute inset-0 w-full h-full rounded-2xl opacity-100 group-hover:opacity-0 transition-opacity duration-300 ease-in-out pointer-events-none " src="./Assets/weatherIcon.svg" alt="Weather" />
+            <img class="absolute inset-0 w-full h-full rounded-2xl opacity-100 group-hover:opacity-0 transition-opacity duration-300 ease-in-out pointer-events-none"
+                src="./Assets/weatherIcon.svg" alt="Weather" />
 
             <!-- Hover Image -->
-            <img class="absolute inset-0 w-full h-full rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out pointer-events-none" src="./Assets/weatherIconDarkMode.svg" alt="" />
+            <img class="absolute inset-0 w-full h-full rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out pointer-events-none"
+                src="./Assets/weatherIconDarkMode.svg" alt="" />
         </div>
-
     </div>
 
     <!-- MAIN CARD -->
-    <div class=" absolute top-7.5 left-25 right-7.5 bottom-7.5">
-        <h1>Panadura, Sri Lanka</h1>
+    <div class="absolute top-7.5 left-25 right-7.5 bottom-7.5">
+        <div class="header-section flex">
+            <div class="details-section-header">
+                <h1 class="font-bold text-3xl">Panadura, Sri Lanka</h1>
+                <h6 class="text-[#929191]">2026-10-16 00:52 Updated just now</h6>
+            </div>
+
+            <div class="search-section flex ml-250 h-12">
+                <input type="text" id="txtSearchCity" placeholder="Search for city..."
+                    class="rounded-xl border-[#cfcccc] outline-[#5283fd]" />
+                <a onclick="btnSearchCity()" class="ml-2">
+                    <div
+                        class="bg-[#4B70F5] w-20 h-12 rounded-xl active:scale-95 active:bg-[#2547c2] cursor-pointer transition duration-200 ease-in-out">
+                        <img class="w-10 ml-5 p-1 pt-2" src="./Assets/searchIcon.svg" alt="" />
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <div id="weatherCardContainer" class="mt-5">
+            <div class="bg-[#262775] p-10 text-white rounded-2xl flex w-273 h-100">
+                <div>
+                    <h6 class="text-xs flex">CURRENT FORCAST</h6>
+                    <h1 class="text-9xl flex">32.9&deg</h1>
+                    <h1 class="text-lg flex">Chance of rain: 36%</h1>
+
+                    <!-- WEATHER DETAILS -->
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-60 mt-10">
+
+                        <!-- FEELS LIKE -->
+                        <div class="rounded-2xl bg-[#3e4cc4] p-5">
+                            <div class="flex items-center gap-2 text-gray-500">
+                                <img class="w-5 h-5" src="./Assets/thermometer.svg" alt="">
+                                <h6 class="text-sm font-medium text-white">Feels like</h6>
+                            </div>
+
+                            <h5 class="mt-4 text-3xl text-white font-semibold">
+                                29°
+                            </h5>
+                        </div>
+
+                        <!-- HUMIDITY -->
+                        <div class="rounded-2xl bg-[#3e4cc4] p-5">
+                            <div class="flex items-center gap-2 text-gray-500">
+                                <img class="w-5 h-5" src="./Assets/humidity.svg" alt="">
+                                <h6 class="text-sm font-medium text-white">Humidity</h6>
+                            </div>
+
+                            <h5 class="mt-4 text-3xl text-white font-semibold">
+                                65%
+                            </h5>
+                        </div>
+
+                        <!-- WIND SPEED -->
+                        <div class="rounded-2xl bg-[#3e4cc4] p-5">
+                            <div class="flex items-center gap-2 text-white">
+                                <img class="w-5 h-5" src="./Assets/wind.svg" alt="">
+                                <h6 class="text-sm font-medium">Wind speed</h6>
+                            </div>
+
+                            <h5 class="mt-4 text-3xl font-semibold text-white">
+                                12 km/h
+                            </h5>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="-ml-47.75">
+                    <img class="w-60" src="./Assets/sunny.png" alt="" />
+                </div>
+            </div>
+        </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
