@@ -4,106 +4,161 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Weatherly - Weather App</title>
-    <link href="https://cdn.jsdelivr.net/npm/flowbite@4.0.1/dist/flowbite.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="./CSS/style.css" />
+    <meta name="theme-color" content="#f4f6fb" />
+    <title>Weatherly — Weather dashboard</title>
 </head>
 
-<body class="bg-[#eaebf0] font-[Outfit]">
-    <!-- SIDE NAV BAR -->
-    <div class="bg-[white] w-20 h-screen relative">
-        <img class="w-17 ml-2" src="./Assets/logo.svg" alt="" />
+<body class="m-0 min-h-screen min-w-[320px] font-sans antialiased">
+    <input class="peer/theme sr-only" id="theme-toggle" type="checkbox" aria-label="Toggle dark theme" />
 
-        <div
-            class="relative group ml-2 mt-25 w-17 h-17 cursor-pointer rounded-2xl hover:bg-[#a2c4f9] transition-colors duration-300">
-            <!-- Original Image -->
-            <img class="absolute inset-0 w-full h-full rounded-2xl opacity-100 group-hover:opacity-0 transition-opacity duration-300 ease-in-out pointer-events-none"
-                src="./Assets/weatherIcon.svg" alt="Weather" />
+    <div
+        class="min-h-screen bg-[var(--page-bg)] text-[var(--heading-color)] [--page-bg:#f4f6fb] [--sidebar-bg:rgba(255,255,255,.88)] [--surface-bg:rgba(255,255,255,.72)] [--surface-solid:#fff] [--border-color:#e9ecf3] [--heading-color:#20233b] [--body-color:#858ba0] [--muted-color:#969bad] [--toggle-bg:#e7eaf4] [--toggle-border:#dce0eb] [--toggle-shift:0px] peer-checked/theme:[--page-bg:#151725] peer-checked/theme:[--sidebar-bg:rgba(27,30,47,.96)] peer-checked/theme:[--surface-bg:#202338] peer-checked/theme:[--surface-solid:#202338] peer-checked/theme:[--border-color:#30344c] peer-checked/theme:[--heading-color:#f0f1fa] peer-checked/theme:[--body-color:#a8aec4] peer-checked/theme:[--muted-color:#a2a8bb] peer-checked/theme:[--toggle-bg:#4f6ff1] peer-checked/theme:[--toggle-border:#4f6ff1] peer-checked/theme:[--toggle-shift:21px] peer-checked/theme:[color-scheme:dark]">
 
-            <!-- Hover Image -->
-            <img class="absolute inset-0 w-full h-full rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out pointer-events-none"
-                src="./Assets/weatherIconDarkMode.svg" alt="" />
-        </div>
-    </div>
+        <aside class="fixed inset-y-0 left-0 z-10 flex w-[104px] flex-col items-center border-r border-[var(--border-color)] bg-[var(--sidebar-bg)] px-[14px] py-[27px] transition-colors duration-200 max-[760px]:w-[76px] max-[760px]:px-[10px] max-[760px]:py-[18px] max-[520px]:absolute max-[520px]:inset-x-0 max-[520px]:top-0 max-[520px]:h-[70px] max-[520px]:w-full max-[520px]:flex-row max-[520px]:justify-between max-[520px]:border-r-0 max-[520px]:border-b max-[520px]:px-[19px] max-[520px]:py-[9px]">
+            <a class="grid h-[68px] w-[68px] place-items-center max-[760px]:h-[54px] max-[760px]:w-[54px] max-[520px]:h-[50px] max-[520px]:w-[50px]" href="#" aria-label="Weatherly home">
+                <img class="block h-full w-full object-contain" src="./Assets/logo.svg" alt="Weatherly" />
+            </a>
 
-    <!-- MAIN CARD -->
-    <div class="absolute top-7.5 left-25 right-7.5 bottom-7.5">
-        <div class="header-section flex">
-            <div class="details-section-header">
-                <h1 class="font-bold text-3xl">Panadura, Sri Lanka</h1>
-                <h6 class="text-[#929191]">2026-10-16 00:52 Updated just now</h6>
-            </div>
-
-            <div class="search-section flex ml-250 h-12">
-                <input type="text" id="txtSearchCity" placeholder="Search for city..."
-                    class="rounded-xl border-[#cfcccc] outline-[#5283fd]" />
-                <a onclick="btnSearchCity()" class="ml-2">
-                    <div
-                        class="bg-[#4B70F5] w-20 h-12 rounded-xl active:scale-95 active:bg-[#2547c2] cursor-pointer transition duration-200 ease-in-out">
-                        <img class="w-10 ml-5 p-1 pt-2" src="./Assets/searchIcon.svg" alt="" />
-                    </div>
+            <nav class="mt-[78px] w-full max-[760px]:mt-[48px] max-[520px]:m-0 max-[520px]:w-auto" aria-label="Main navigation">
+                <a class="flex min-h-[74px] flex-col items-center justify-center gap-[5px] rounded-[20px] bg-[#4f6ff1] text-white no-underline shadow-[0_10px_24px_rgba(72,102,223,.2)] max-[760px]:min-h-[62px] max-[760px]:rounded-[16px] max-[520px]:h-[48px] max-[520px]:min-h-[48px] max-[520px]:w-[48px] max-[520px]:rounded-[14px]" href="./index.html" aria-current="page">
+                    <img class="h-[26px] w-[26px] object-contain max-[760px]:h-[23px] max-[760px]:w-[23px] max-[520px]:h-[22px] max-[520px]:w-[22px]" src="./Assets/weatherIcon.svg" alt="" />
+                    <span class="text-[10px] font-semibold tracking-[.02em] max-[520px]:hidden">Weather</span>
                 </a>
-            </div>
-        </div>
+                <a class="mt-3 flex min-h-[74px] flex-col items-center justify-center gap-[5px] rounded-[20px] text-[#858ba0] no-underline transition-colors hover:bg-[#eef1ff] hover:text-[#4f6ff1] max-[760px]:min-h-[62px] max-[760px]:rounded-[16px] max-[520px]:mt-0 max-[520px]:h-[48px] max-[520px]:min-h-[48px] max-[520px]:w-[48px] max-[520px]:rounded-[14px]" href="./map.html">
+                    <svg class="h-[25px] w-[25px] max-[520px]:h-[22px] max-[520px]:w-[22px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M9 18 3 21V6l6-3m0 15 6 3m-6-3V3m6 18 6-3V3l-6 3m0 15V6m0 0L9 3" />
+                    </svg>
+                    <span class="text-[10px] font-semibold tracking-[.02em] max-[520px]:hidden">Map</span>
+                </a>
+            </nav>
 
-        <div id="weatherCardContainer" class="mt-5">
-            <div class="bg-[#262775] p-10 text-white rounded-2xl flex w-273 h-100">
-                <div>
-                    <h6 class="text-xs flex">CURRENT FORCAST</h6>
-                    <h1 class="text-9xl flex">32.9&deg</h1>
-                    <h1 class="text-lg flex">Chance of rain: 36%</h1>
+            <p class="m-[auto_0_8px] text-center text-[8px] font-bold leading-[1.7] tracking-[.12em] text-[#a6adbf] max-[520px]:hidden">YOUR WEATHER<br />AT A GLANCE</p>
+        </aside>
 
-                    <!-- WEATHER DETAILS -->
-                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-60 mt-10">
+        <main class="mx-auto ml-[104px] min-h-screen w-[calc(100%-104px)] max-w-[1440px] px-[clamp(28px,5.5vw,88px)] pb-[58px] pt-[54px] max-[760px]:ml-[76px] max-[760px]:w-[calc(100%-76px)] max-[760px]:px-[24px] max-[760px]:pb-[40px] max-[760px]:pt-[34px] max-[520px]:mx-0 max-[520px]:mt-[70px] max-[520px]:w-full max-[520px]:px-[17px] max-[520px]:pb-[30px] max-[520px]:pt-[27px]">
+            <header class="mb-[34px] flex items-center justify-between gap-8 max-[1100px]:mb-[25px] max-[1100px]:flex-col max-[1100px]:items-start max-[1100px]:gap-5 max-[520px]:mb-[21px] max-[520px]:gap-[17px]">
+                <div class="details-section-header">
+                    <p class="m-0 text-[10px] font-bold tracking-[.16em] text-[var(--muted-color)]">TODAY'S WEATHER</p>
+                    <h1 class="mb-[7px] mt-2 text-[clamp(25px,3vw,34px)] font-bold tracking-[-.04em] text-[var(--heading-color)] max-[520px]:text-[27px]" id="city-name">Panadura, Sri Lanka</h1>
+                    <p class="m-0 text-[13px] text-[var(--muted-color)]" id="updated-time">Saturday, October 24 <span class="px-[5px] text-[#c5c9d4]" aria-hidden="true">·</span> Sample conditions</p>
+                </div>
 
-                        <!-- FEELS LIKE -->
-                        <div class="rounded-2xl bg-[#3e4cc4] p-5">
-                            <div class="flex items-center gap-2 text-gray-500">
-                                <img class="w-5 h-5" src="./Assets/thermometer.svg" alt="">
-                                <h6 class="text-sm font-medium text-white">Feels like</h6>
-                            </div>
+                <div class="relative flex w-[min(490px,58%)] items-center justify-end gap-5 max-[1100px]:w-full max-[520px]:gap-3">
+                    <form class="flex h-12 min-w-[180px] flex-1 rounded-[14px] border border-[var(--border-color)] bg-[var(--surface-solid)] p-[5px] shadow-[0_5px_18px_rgba(40,48,88,.04)] transition-colors duration-200" role="search">
+                        <label class="sr-only" for="city-search">Search for a city</label>
+                        <input class="w-full min-w-0 rounded-lg border-0 bg-transparent px-3 text-[13px] text-[var(--heading-color)] outline-none placeholder:text-[var(--muted-color)] focus-visible:outline-2 focus-visible:outline-[#9baefb]" id="city-search" type="search" placeholder="Search for a city..." />
+                        <input class="h-10 w-10 min-w-10 cursor-pointer appearance-none rounded-[10px] border-0 bg-[#4f6ff1] bg-[url('./Assets/searchIcon.svg')] bg-[length:21px_21px] bg-center bg-no-repeat transition active:scale-95" type="button" value="" aria-label="Search" onclick="btnSearchCity()" />
+                    </form>
+                    <p class="absolute right-0 top-full z-20 mt-2 hidden max-w-full rounded-lg bg-white px-3 py-2 text-xs text-red-600 shadow-lg" id="search-status" role="status" aria-live="polite"></p>
 
-                            <h5 class="mt-4 text-3xl text-white font-semibold">
-                                29°
-                            </h5>
+                    <label class="flex shrink-0 cursor-pointer select-none items-center gap-[9px] rounded-md text-[var(--body-color)] focus-within:outline-2 focus-within:outline-offset-4 focus-within:outline-[#849afb]" for="theme-toggle">
+                        <span class="relative flex h-[27px] w-12 items-center justify-around overflow-hidden rounded-full border border-[var(--toggle-border)] bg-[var(--toggle-bg)] transition-colors duration-200" aria-hidden="true">
+                            <span class="z-10 w-4 text-center text-[15px] leading-none text-[#747c98]">☼</span>
+                            <span class="z-10 w-4 text-center text-[15px] leading-none text-white">☾</span>
+                            <span class="absolute left-[3px] top-[3px] h-[19px] w-[19px] translate-x-[var(--toggle-shift)] rounded-full bg-white shadow-[0_1px_4px_rgba(29,35,68,.2)] transition-transform duration-200"></span>
+                        </span>
+                        <span class="whitespace-nowrap text-xs font-semibold">Dark mode</span>
+                    </label>
+                </div>
+            </header>
+
+            <section class="relative grid min-h-[388px] grid-cols-[1fr_.8fr] grid-rows-[1fr_auto] overflow-hidden rounded-3xl bg-gradient-to-br from-[#262775] via-[#303a9c] to-[#364bc0] px-10 pb-7 pt-[37px] text-white shadow-[0_24px_50px_rgba(48,58,142,.17)] max-[760px]:min-h-0 max-[760px]:px-[26px] max-[760px]:pb-6 max-[760px]:pt-[30px] max-[520px]:rounded-[20px] max-[520px]:px-[19px] max-[520px]:pb-[19px] max-[520px]:pt-[25px]" aria-labelledby="current-weather-title">
+                <div class="relative z-[1]">
+                    <p class="m-0 text-[10px] font-bold tracking-[.16em] text-white/70" id="current-weather-title">CURRENT WEATHER</p>
+                    <p class="mb-0 ml-[-7px] mt-[17px] text-[clamp(76px,10vw,112px)] font-light leading-[.98] tracking-[-.08em] max-[520px]:text-[clamp(72px,20vw,92px)]" id="current-temp">32.9°</p>
+                    <p class="mb-0 mt-[10px] text-[15px] font-medium text-white/90 max-[520px]:text-[13px]" id="current-condition">Sunny <span class="px-[5px] text-white/45" aria-hidden="true">/</span> Feels like 29°</p>
+                    <p class="mt-[18px] flex items-center gap-2 text-xs text-white/75 max-[520px]:gap-[6px] max-[520px]:text-[11px]">
+                        <img class="h-[15px] w-[15px] object-contain" src="./Assets/droplet.svg" alt="" />
+                        Chance of rain <strong class="font-bold text-white" id="chance-of-rain">36%</strong>
+                    </p>
+                </div>
+
+                <img class="relative z-[1] h-[clamp(150px,23vw,250px)] w-[clamp(150px,23vw,250px)] justify-self-center self-center object-contain drop-shadow-[0_14px_20px_rgba(17,22,79,.16)] max-[760px]:h-[clamp(130px,29vw,205px)] max-[760px]:w-[clamp(130px,29vw,205px)] max-[520px]:h-[clamp(115px,32vw,160px)] max-[520px]:w-[clamp(115px,32vw,160px)]" src="./Assets/sunny.png" alt="Bright sunshine" id="weather-icon" />
+
+                <div class="relative z-[1] col-span-full mt-[22px] grid grid-cols-3 gap-[14px] max-[760px]:gap-[10px] max-[520px]:mt-[14px] max-[520px]:grid-cols-1" aria-label="Weather details">
+                    <article class="min-h-[112px] rounded-2xl border border-white/10 bg-[#5c6bcd]/45 px-[19px] pb-[14px] pt-[17px] backdrop-blur-lg max-[760px]:px-3 max-[760px]:pb-3 max-[760px]:pt-[15px] max-[520px]:grid max-[520px]:min-h-0 max-[520px]:grid-cols-[1fr_auto] max-[520px]:items-center max-[520px]:px-[15px] max-[520px]:py-[13px]">
+                        <div class="flex items-center gap-2">
+                            <img class="h-[17px] w-[17px] object-contain" src="./Assets/thermometer.svg" alt="" />
+                            <h2 class="m-0 text-xs font-medium text-white/90">Feels like</h2>
                         </div>
+                        <p class="mb-[3px] mt-[11px] text-[25px] font-semibold leading-none max-[520px]:col-start-2 max-[520px]:row-span-2 max-[520px]:row-start-1 max-[520px]:m-0 max-[520px]:text-right"><span id="feels-like">29</span><span class="text-[.76em] font-medium">°</span></p>
+                        <span class="text-[10px] text-white/60 max-[760px]:text-[9px] max-[520px]:col-start-1 max-[520px]:mt-[5px]">A little cooler in the shade</span>
+                    </article>
 
-                        <!-- HUMIDITY -->
-                        <div class="rounded-2xl bg-[#3e4cc4] p-5">
-                            <div class="flex items-center gap-2 text-gray-500">
-                                <img class="w-5 h-5" src="./Assets/humidity.svg" alt="">
-                                <h6 class="text-sm font-medium text-white">Humidity</h6>
-                            </div>
-
-                            <h5 class="mt-4 text-3xl text-white font-semibold">
-                                65%
-                            </h5>
+                    <article class="min-h-[112px] rounded-2xl border border-white/10 bg-[#5c6bcd]/45 px-[19px] pb-[14px] pt-[17px] backdrop-blur-lg max-[760px]:px-3 max-[760px]:pb-3 max-[760px]:pt-[15px] max-[520px]:grid max-[520px]:min-h-0 max-[520px]:grid-cols-[1fr_auto] max-[520px]:items-center max-[520px]:px-[15px] max-[520px]:py-[13px]">
+                        <div class="flex items-center gap-2">
+                            <img class="h-[17px] w-[17px] object-contain" src="./Assets/humidity.svg" alt="" />
+                            <h2 class="m-0 text-xs font-medium text-white/90">Humidity</h2>
                         </div>
+                        <p class="mb-[3px] mt-[11px] text-[25px] font-semibold leading-none max-[520px]:col-start-2 max-[520px]:row-span-2 max-[520px]:row-start-1 max-[520px]:m-0 max-[520px]:text-right"><span id="humidity">65</span><span class="text-[.76em] font-medium">%</span></p>
+                        <span class="text-[10px] text-white/60 max-[760px]:text-[9px] max-[520px]:col-start-1 max-[520px]:mt-[5px]">Comfortable humidity</span>
+                    </article>
 
-                        <!-- WIND SPEED -->
-                        <div class="rounded-2xl bg-[#3e4cc4] p-5">
-                            <div class="flex items-center gap-2 text-white">
-                                <img class="w-5 h-5" src="./Assets/wind.svg" alt="">
-                                <h6 class="text-sm font-medium">Wind speed</h6>
-                            </div>
-
-                            <h5 class="mt-4 text-3xl font-semibold text-white">
-                                12 km/h
-                            </h5>
+                    <article class="min-h-[112px] rounded-2xl border border-white/10 bg-[#5c6bcd]/45 px-[19px] pb-[14px] pt-[17px] backdrop-blur-lg max-[760px]:px-3 max-[760px]:pb-3 max-[760px]:pt-[15px] max-[520px]:grid max-[520px]:min-h-0 max-[520px]:grid-cols-[1fr_auto] max-[520px]:items-center max-[520px]:px-[15px] max-[520px]:py-[13px]">
+                        <div class="flex items-center gap-2">
+                            <img class="h-[17px] w-[17px] object-contain" src="./Assets/wind.svg" alt="" />
+                            <h2 class="m-0 text-xs font-medium text-white/90">Wind speed</h2>
                         </div>
+                        <p class="mb-[3px] mt-[11px] text-[25px] font-semibold leading-none max-[520px]:col-start-2 max-[520px]:row-span-2 max-[520px]:row-start-1 max-[520px]:m-0 max-[520px]:text-right"><span id="wind-speed">12</span> <span class="text-[.5em] font-medium">km/h</span></p>
+                        <span class="text-[10px] text-white/60 max-[760px]:text-[9px] max-[520px]:col-start-1 max-[520px]:mt-[5px]">Light breeze</span>
+                    </article>
+                </div>
+            </section>
 
+            <section class="mt-7" aria-labelledby="extra-weather-title">
+                <div class="mb-4">
+                    <p class="m-0 text-[10px] font-bold tracking-[.16em] text-[var(--muted-color)]">MORE CONDITIONS</p>
+                    <h2 class="mb-0 mt-2 text-xl font-semibold tracking-[-.03em] text-[var(--heading-color)]" id="extra-weather-title">Weather details</h2>
+                </div>
+                <div class="grid grid-cols-2 gap-4 max-[520px]:grid-cols-1">
+                    <article class="rounded-2xl border border-[var(--border-color)] bg-[var(--surface-bg)] p-5 transition-colors duration-200">
+                        <p class="m-0 text-sm text-[var(--body-color)]">UV index</p>
+                        <p class="mb-0 mt-3 text-3xl font-semibold text-[var(--heading-color)]"><span id="uv-index">—</span></p>
+                        <p class="mb-0 mt-2 text-xs text-[var(--muted-color)]">Sun exposure level</p>
+                    </article>
+                    <article class="rounded-2xl border border-[var(--border-color)] bg-[var(--surface-bg)] p-5 transition-colors duration-200">
+                        <p class="m-0 text-sm text-[var(--body-color)]">Visibility</p>
+                        <p class="mb-0 mt-3 text-3xl font-semibold text-[var(--heading-color)]"><span id="visibility">—</span> <span class="text-base font-medium">km</span></p>
+                        <p class="mb-0 mt-2 text-xs text-[var(--muted-color)]">How far you can see</p>
+                    </article>
+                </div>
+            </section>
+
+            <section class="mt-8" aria-labelledby="hourly-title">
+                <div class="mb-4">
+                    <p class="m-0 text-[10px] font-bold tracking-[.16em] text-[var(--muted-color)]">COMING UP</p>
+                    <h2 class="mb-0 mt-2 text-xl font-semibold tracking-[-.03em] text-[var(--heading-color)]" id="hourly-title">Hourly forecast</h2>
+                </div>
+                <div class="grid grid-cols-6 gap-3 max-[760px]:grid-cols-3 max-[520px]:grid-cols-2" id="hourly-forecast" aria-live="polite">
+                    <p class="col-span-full m-0 rounded-2xl border border-[var(--border-color)] bg-[var(--surface-bg)] p-5 text-sm text-[var(--body-color)]">Search for a city to see its hourly forecast.</p>
+                </div>
+            </section>
+
+            <section class="mt-8 rounded-2xl border border-[var(--border-color)] bg-[var(--surface-bg)] p-5 transition-colors duration-200" aria-labelledby="favorites-title">
+                <div class="flex items-center justify-between gap-4 max-[520px]:items-start">
+                    <div>
+                        <p class="m-0 text-[10px] font-bold tracking-[.16em] text-[var(--muted-color)]">QUICK ACCESS</p>
+                        <h2 class="mb-0 mt-2 text-xl font-semibold tracking-[-.03em] text-[var(--heading-color)]" id="favorites-title">Favorite cities</h2>
                     </div>
+                    <button class="shrink-0 rounded-lg bg-[#4f6ff1] px-4 py-2 text-xs font-semibold text-white transition hover:bg-[#405fdb] active:scale-95" id="save-favorite" type="button">Save current city</button>
                 </div>
+                <p class="mb-0 mt-3 hidden text-sm text-[var(--body-color)]" id="favorite-status" role="status" aria-live="polite"></p>
+                <div class="mt-4 flex flex-wrap gap-2" id="favorite-cities">
+                    <p class="m-0 text-sm text-[var(--body-color)]">No favorite cities saved yet.</p>
+                </div>
+            </section>
 
-                <div class="-ml-47.75">
-                    <img class="w-60" src="./Assets/sunny.png" alt="" />
+            <section class="mt-7 flex items-center justify-between gap-7 rounded-[18px] border border-[var(--border-color)] bg-[var(--surface-bg)] px-[26px] py-[23px] transition-colors duration-200 max-[520px]:mt-[18px] max-[520px]:flex-col max-[520px]:items-start max-[520px]:gap-[10px] max-[520px]:p-[19px]" aria-labelledby="outlook-title">
+                <div>
+                    <p class="m-0 text-[10px] font-bold tracking-[.16em] text-[var(--muted-color)]">MAKE THE MOST OF YOUR DAY</p>
+                    <h2 class="mb-0 mt-[7px] text-[19px] tracking-[-.025em] text-[var(--heading-color)]" id="outlook-title">A bright, sunny day</h2>
                 </div>
-            </div>
-        </div>
+                <p class="m-0 max-w-[330px] text-right text-[13px] leading-[1.6] text-[var(--body-color)] max-[520px]:text-left">Clear skies and warm weather in Panadura. Don’t forget your sunglasses.</p>
+            </section>
+        </main>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <script src="https://cdn.jsdelivr.net/npm/flowbite@4.0.1/dist/flowbite.min.js"></script>
     <script src="./JS/app.js"></script>
 </body>
 

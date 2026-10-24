@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f4f6fb" />
+    <title>Weatherly — Weather map</title>
+</head>
+
+<body class="m-0 min-h-screen min-w-[320px] font-sans antialiased">
+    <input class="peer/theme sr-only" id="theme-toggle" type="checkbox" aria-label="Toggle dark theme" />
+
+    <div
+        class="min-h-screen bg-[var(--page-bg)] text-[var(--heading-color)] [--page-bg:#f4f6fb] [--sidebar-bg:rgba(255,255,255,.88)] [--surface-bg:rgba(255,255,255,.72)] [--surface-solid:#fff] [--border-color:#e9ecf3] [--heading-color:#20233b] [--body-color:#858ba0] [--muted-color:#969bad] peer-checked/theme:[--page-bg:#151725] peer-checked/theme:[--sidebar-bg:rgba(27,30,47,.96)] peer-checked/theme:[--surface-bg:#202338] peer-checked/theme:[--surface-solid:#202338] peer-checked/theme:[--border-color:#30344c] peer-checked/theme:[--heading-color:#f0f1fa] peer-checked/theme:[--body-color:#a8aec4] peer-checked/theme:[--muted-color:#a2a8bb] peer-checked/theme:[color-scheme:dark]">
+
+        <aside class="fixed inset-y-0 left-0 z-10 flex w-[104px] flex-col items-center border-r border-[var(--border-color)] bg-[var(--sidebar-bg)] px-[14px] py-[27px] transition-colors duration-200 max-[760px]:w-[76px] max-[760px]:px-[10px] max-[760px]:py-[18px] max-[520px]:absolute max-[520px]:inset-x-0 max-[520px]:top-0 max-[520px]:h-[70px] max-[520px]:w-full max-[520px]:flex-row max-[520px]:justify-between max-[520px]:border-r-0 max-[520px]:border-b max-[520px]:px-[19px] max-[520px]:py-[9px]">
+            <a class="grid h-[68px] w-[68px] place-items-center max-[760px]:h-[54px] max-[760px]:w-[54px] max-[520px]:h-[50px] max-[520px]:w-[50px]" href="./index.html" aria-label="Weatherly home">
+                <img class="block h-full w-full object-contain" src="./Assets/logo.svg" alt="Weatherly" />
+            </a>
+
+            <nav class="mt-[78px] w-full max-[760px]:mt-[48px] max-[520px]:m-0 max-[520px]:flex max-[520px]:w-auto max-[520px]:gap-2" aria-label="Main navigation">
+                <a class="flex min-h-[74px] flex-col items-center justify-center gap-[5px] rounded-[20px] text-[#858ba0] no-underline transition-colors hover:bg-[#eef1ff] hover:text-[#4f6ff1] max-[760px]:min-h-[62px] max-[760px]:rounded-[16px] max-[520px]:h-[48px] max-[520px]:min-h-[48px] max-[520px]:w-[48px] max-[520px]:rounded-[14px]" href="./index.html">
+                    <img class="h-[26px] w-[26px] object-contain max-[760px]:h-[23px] max-[760px]:w-[23px] max-[520px]:h-[22px] max-[520px]:w-[22px]" src="./Assets/weatherIcon.svg" alt="" />
+                    <span class="text-[10px] font-semibold tracking-[.02em] max-[520px]:hidden">Weather</span>
+                </a>
+                <a class="mt-3 flex min-h-[74px] flex-col items-center justify-center gap-[5px] rounded-[20px] bg-[#4f6ff1] text-white no-underline shadow-[0_10px_24px_rgba(72,102,223,.2)] max-[760px]:min-h-[62px] max-[760px]:rounded-[16px] max-[520px]:mt-0 max-[520px]:h-[48px] max-[520px]:min-h-[48px] max-[520px]:w-[48px] max-[520px]:rounded-[14px]" href="./map.html" aria-current="page">
+                    <svg class="h-[25px] w-[25px] max-[520px]:h-[22px] max-[520px]:w-[22px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M9 18 3 21V6l6-3m0 15 6 3m-6-3V3m6 18 6-3V3l-6 3m0 15V6m0 0L9 3" />
+                    </svg>
+                    <span class="text-[10px] font-semibold tracking-[.02em] max-[520px]:hidden">Map</span>
+                </a>
+            </nav>
+
+            <p class="m-[auto_0_8px] text-center text-[8px] font-bold leading-[1.7] tracking-[.12em] text-[#a6adbf] max-[520px]:hidden">YOUR WEATHER<br />AT A GLANCE</p>
+        </aside>
+
+        <main class="mx-auto ml-[104px] min-h-screen w-[calc(100%-104px)] max-w-[1440px] px-[clamp(28px,5.5vw,88px)] pb-[58px] pt-[54px] max-[760px]:ml-[76px] max-[760px]:w-[calc(100%-76px)] max-[760px]:px-[24px] max-[760px]:pb-[40px] max-[760px]:pt-[34px] max-[520px]:mx-0 max-[520px]:mt-[70px] max-[520px]:w-full max-[520px]:px-[17px] max-[520px]:pb-[30px] max-[520px]:pt-[27px]">
+            <header class="mb-8 flex items-center justify-between gap-8 max-[760px]:flex-col max-[760px]:items-start max-[760px]:gap-4">
+                <div>
+                    <p class="m-0 text-[10px] font-bold tracking-[.16em] text-[var(--muted-color)]">WEATHER AROUND YOU</p>
+                    <h1 class="mb-[7px] mt-2 text-[clamp(25px,3vw,34px)] font-bold tracking-[-.04em] text-[var(--heading-color)] max-[520px]:text-[27px]">Weather map</h1>
+                    <p class="m-0 text-[13px] text-[var(--muted-color)]" id="map-description">Explore the area around Panadura, Sri Lanka</p>
+                </div>
+
+                <label class="flex shrink-0 cursor-pointer select-none items-center gap-[9px] rounded-md text-[var(--body-color)] focus-within:outline-2 focus-within:outline-offset-4 focus-within:outline-[#849afb]" for="theme-toggle">
+                    <span class="relative flex h-[27px] w-12 items-center justify-around overflow-hidden rounded-full border border-[#dce0eb] bg-[#e7eaf4] transition-colors duration-200 peer-checked/theme:border-[#4f6ff1] peer-checked/theme:bg-[#4f6ff1]" aria-hidden="true">
+                        <span class="z-10 w-4 text-center text-[15px] leading-none text-[#747c98]">☼</span>
+                        <span class="z-10 w-4 text-center text-[15px] leading-none text-white">☾</span>
+                        <span class="absolute left-[3px] top-[3px] h-[19px] w-[19px] rounded-full bg-white shadow-[0_1px_4px_rgba(29,35,68,.2)] transition-transform duration-200 peer-checked/theme:translate-x-[21px]"></span>
+                    </span>
+                    <span class="whitespace-nowrap text-xs font-semibold">Dark mode</span>
+                </label>
+            </header>
+
+            <section class="overflow-hidden rounded-3xl border border-[var(--border-color)] bg-[var(--surface-solid)] shadow-[0_18px_48px_rgba(40,48,88,.08)]" aria-labelledby="map-heading">
+                <div class="flex items-center justify-between gap-4 px-6 py-5 max-[520px]:items-start max-[520px]:px-4">
+                    <div>
+                        <h2 class="m-0 text-lg font-semibold text-[var(--heading-color)]" id="map-heading">Panadura, Sri Lanka</h2>
+                        <p class="mb-0 mt-1 text-sm text-[var(--body-color)]" id="map-coordinates">6.7132° N, 79.9042° E</p>
+                    </div>
+                    <a class="shrink-0 rounded-lg bg-[#4f6ff1] px-4 py-2 text-xs font-semibold text-white no-underline transition hover:bg-[#405fdb]" id="full-map-link" href="https://www.openstreetmap.org/?mlat=6.7132&amp;mlon=79.9042#map=13/6.7132/79.9042" target="_blank" rel="noopener noreferrer">Open full map</a>
+                </div>
+
+                <iframe
+                    class="block h-[min(66vh,640px)] min-h-[360px] w-full border-0 bg-[#e8edf5] max-[520px]:min-h-[420px]"
+                    title="Map of Panadura, Sri Lanka"
+                    src="https://www.openstreetmap.org/export/embed.html?bbox=79.84%2C6.66%2C79.97%2C6.77&amp;layer=mapnik&amp;marker=6.7132%2C79.9042"
+                    id="weather-map"
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </section>
+
+            <p class="mb-0 mt-4 text-xs text-[var(--muted-color)]">Map data © <a class="text-[#4f6ff1] underline" href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">OpenStreetMap contributors</a>.</p>
+        </main>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script>
+        var savedWeather = localStorage.getItem("weatherData");
+
+        if (savedWeather != null) {
+            var weather = JSON.parse(savedWeather);
+            var cityName = weather.location.name + ", " + weather.location.country;
+            var latitude = weather.location.lat;
+            var longitude = weather.location.lon;
+            var latitudeDirection = "N";
+            var longitudeDirection = "E";
+            var latitudeMargin = 0.065;
+            var longitudeMargin = 0.065;
+
+            if (latitude < 0) {
+                latitudeDirection = "S";
+            }
+
+            if (longitude < 0) {
+                longitudeDirection = "W";
+            }
+
+            var mapBounds = (longitude - longitudeMargin) + "," +
+                (latitude - latitudeMargin) + "," +
+                (longitude + longitudeMargin) + "," +
+                (latitude + latitudeMargin);
+
+            document.getElementById("map-description").textContent =
+                "Explore the area around " + cityName;
+            document.getElementById("map-heading").textContent = cityName;
+            document.getElementById("map-coordinates").textContent =
+                Math.abs(latitude) + "° " + latitudeDirection + ", " +
+                Math.abs(longitude) + "° " + longitudeDirection;
+            document.getElementById("weather-map").title = "Map of " + cityName;
+            document.getElementById("weather-map").src =
+                "https://www.openstreetmap.org/export/embed.html?bbox=" +
+                encodeURIComponent(mapBounds) + "&layer=mapnik&marker=" +
+                latitude + "%2C" + longitude;
+            document.getElementById("full-map-link").href =
+                "https://www.openstreetmap.org/?mlat=" + latitude +
+                "&mlon=" + longitude + "#map=13/" + latitude + "/" + longitude;
+        }
+    </script>
+</body>
+
+</html>
